@@ -35,6 +35,9 @@ class ViewController: UITableViewController, LinkableLabelDelegate {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "linkableCell", for: indexPath)
         if let linkableCell = cell as? LinkableTableViewCell {
+            linkableCell.titleLabel.text = "This is Row \(indexPath.row)"
+            linkableCell.subtitleLabel.text = "This is the subtitle row with some text that breaks into two lines."
+            
             linkableCell.linkableLabel.textColor = .black
             linkableCell.linkableLabel.text = Data.texts[indexPath.row]
             linkableCell.linkableLabel.enableLinks()

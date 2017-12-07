@@ -35,6 +35,8 @@ class TTTViewController: UITableViewController, TTTAttributedLabelDelegate {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "tttCell", for: indexPath)
         if let linkableCell = cell as? TTTTableViewCell {
+            linkableCell.titleLabel.text = "This is Row \(indexPath.row)"
+            linkableCell.subtitleLabel.text = "This is the subtitle row with some text that breaks into two lines."
             linkableCell.tttLabel.text = Data.texts[indexPath.row]
             linkableCell.tttLabel.delegate = self
         }
