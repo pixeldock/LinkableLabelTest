@@ -52,6 +52,14 @@ class TTTViewController: UITableViewController, TTTAttributedLabelDelegate {
     }
     
     func attributedLabel(_ label: TTTAttributedLabel!, didSelectLinkWith url: URL!) {
-        print(url)
+        let alertView = UIAlertController(title: "Open?", message: "\(url!)" , preferredStyle: .alert)
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        let openAction = UIAlertAction(title: "Open", style: .default) { _ in
+            UIApplication.shared.openURL(url)
+        }
+        alertView.addAction(cancelAction)
+        alertView.addAction(openAction)
+        
+        present(alertView, animated: true, completion: nil)
     }
 }

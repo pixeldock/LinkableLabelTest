@@ -14,6 +14,7 @@ class TTTTableViewCell: UITableViewCell {
     let dummyImageView = UIImageView()
     let titleLabel = UILabel()
     let subtitleLabel = UILabel()
+    let typeLabel = UILabel()
     let dummyAccessoryView = UIView()
     
     let tttLabel = TTTAttributedLabel(frame: .zero)
@@ -40,6 +41,15 @@ class TTTTableViewCell: UITableViewCell {
         subtitleLabel.numberOfLines = 0
         contentView.addSubview(subtitleLabel)
         
+        typeLabel.font = UIFont.systemFont(ofSize: 12, weight: .light)
+        typeLabel.textColor = .white
+        typeLabel.textAlignment = .center
+        typeLabel.backgroundColor = .red
+        typeLabel.layer.cornerRadius = 6
+        typeLabel.clipsToBounds = true
+        typeLabel.text = "TTTAttributedLabel"
+        contentView.addSubview(typeLabel)
+        
         dummyAccessoryView.backgroundColor = .lightGray
         dummyAccessoryView.layer.cornerRadius = 10
         dummyAccessoryView.clipsToBounds = true
@@ -55,6 +65,7 @@ class TTTTableViewCell: UITableViewCell {
         dummyImageView.translatesAutoresizingMaskIntoConstraints = false
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         subtitleLabel.translatesAutoresizingMaskIntoConstraints = false
+        typeLabel.translatesAutoresizingMaskIntoConstraints = false
         dummyAccessoryView.translatesAutoresizingMaskIntoConstraints = false
         tttLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
@@ -66,7 +77,12 @@ class TTTTableViewCell: UITableViewCell {
             titleLabel.topAnchor.constraint(equalTo: dummyImageView.topAnchor),
             titleLabel.leadingAnchor.constraint(equalTo: dummyImageView.trailingAnchor, constant: 20),
             
-            subtitleLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 6),
+            typeLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 6),
+            typeLabel.leadingAnchor.constraint(equalTo: titleLabel.leadingAnchor),
+            typeLabel.widthAnchor.constraint(equalToConstant: 140),
+            typeLabel.heightAnchor.constraint(equalToConstant: 20),
+            
+            subtitleLabel.topAnchor.constraint(equalTo: typeLabel.bottomAnchor, constant: 6),
             subtitleLabel.leadingAnchor.constraint(equalTo: titleLabel.leadingAnchor),
             subtitleLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
             
