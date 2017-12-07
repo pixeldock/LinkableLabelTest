@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import WatchdogInspector
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -15,7 +16,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        let rootViewController = UITabBarController()
+        
+        TWWatchdogInspector.start()
+        
+        let tttvc = TTTViewController()
+        tttvc.title = "TTTAttributed"
+        rootViewController.setViewControllers([ViewController(), tttvc], animated: false)
+        
+        window = UIWindow(frame: UIScreen.main.bounds)
+        window?.rootViewController = rootViewController
+        window?.makeKeyAndVisible()
         return true
     }
 

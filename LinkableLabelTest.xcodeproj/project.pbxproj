@@ -7,21 +7,34 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1FB9A8957541D654C66E0760 /* Pods_LinkableLabelTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D932D3C7199362BFA552987 /* Pods_LinkableLabelTest.framework */; };
+		806236971FD92F08009D2C69 /* TTTViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 806236961FD92F08009D2C69 /* TTTViewController.swift */; };
+		806236991FD92FFA009D2C69 /* LinkableTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 806236981FD92FFA009D2C69 /* LinkableTableViewCell.swift */; };
+		8062369B1FD9301F009D2C69 /* LinkableLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8062369A1FD9301F009D2C69 /* LinkableLabel.swift */; };
+		8062369D1FD930EB009D2C69 /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8062369C1FD930EB009D2C69 /* Data.swift */; };
+		8062369F1FD93B19009D2C69 /* TTTTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8062369E1FD93B19009D2C69 /* TTTTableViewCell.swift */; };
 		80801C231FD92DC4004761D3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80801C221FD92DC4004761D3 /* AppDelegate.swift */; };
 		80801C251FD92DC4004761D3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80801C241FD92DC4004761D3 /* ViewController.swift */; };
-		80801C281FD92DC4004761D3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 80801C261FD92DC4004761D3 /* Main.storyboard */; };
 		80801C2A1FD92DC4004761D3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 80801C291FD92DC4004761D3 /* Assets.xcassets */; };
 		80801C2D1FD92DC4004761D3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 80801C2B1FD92DC4004761D3 /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4D932D3C7199362BFA552987 /* Pods_LinkableLabelTest.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LinkableLabelTest.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		806236961FD92F08009D2C69 /* TTTViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TTTViewController.swift; sourceTree = "<group>"; };
+		806236981FD92FFA009D2C69 /* LinkableTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkableTableViewCell.swift; sourceTree = "<group>"; };
+		8062369A1FD9301F009D2C69 /* LinkableLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkableLabel.swift; sourceTree = "<group>"; };
+		8062369C1FD930EB009D2C69 /* Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
+		8062369E1FD93B19009D2C69 /* TTTTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TTTTableViewCell.swift; sourceTree = "<group>"; };
+		806236A01FD93C4C009D2C69 /* LinkableLabelTest-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "LinkableLabelTest-Bridging-Header.h"; sourceTree = "<group>"; };
 		80801C1F1FD92DC4004761D3 /* LinkableLabelTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LinkableLabelTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		80801C221FD92DC4004761D3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		80801C241FD92DC4004761D3 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		80801C271FD92DC4004761D3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		80801C291FD92DC4004761D3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		80801C2C1FD92DC4004761D3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		80801C2E1FD92DC4004761D3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AB16F1DC61CB0A99D4521591 /* Pods-LinkableLabelTest.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LinkableLabelTest.release.xcconfig"; path = "Pods/Target Support Files/Pods-LinkableLabelTest/Pods-LinkableLabelTest.release.xcconfig"; sourceTree = "<group>"; };
+		C1EB7604B40B7151D4FC7D7D /* Pods-LinkableLabelTest.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LinkableLabelTest.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LinkableLabelTest/Pods-LinkableLabelTest.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,6 +42,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1FB9A8957541D654C66E0760 /* Pods_LinkableLabelTest.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -40,6 +54,8 @@
 			children = (
 				80801C211FD92DC4004761D3 /* LinkableLabelTest */,
 				80801C201FD92DC4004761D3 /* Products */,
+				823016C13A66357DA576C587 /* Pods */,
+				A2D6C72829E7678133E92A3D /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -56,12 +72,34 @@
 			children = (
 				80801C221FD92DC4004761D3 /* AppDelegate.swift */,
 				80801C241FD92DC4004761D3 /* ViewController.swift */,
-				80801C261FD92DC4004761D3 /* Main.storyboard */,
 				80801C291FD92DC4004761D3 /* Assets.xcassets */,
 				80801C2B1FD92DC4004761D3 /* LaunchScreen.storyboard */,
 				80801C2E1FD92DC4004761D3 /* Info.plist */,
+				806236961FD92F08009D2C69 /* TTTViewController.swift */,
+				806236981FD92FFA009D2C69 /* LinkableTableViewCell.swift */,
+				8062369A1FD9301F009D2C69 /* LinkableLabel.swift */,
+				8062369C1FD930EB009D2C69 /* Data.swift */,
+				8062369E1FD93B19009D2C69 /* TTTTableViewCell.swift */,
+				806236A01FD93C4C009D2C69 /* LinkableLabelTest-Bridging-Header.h */,
 			);
 			path = LinkableLabelTest;
+			sourceTree = "<group>";
+		};
+		823016C13A66357DA576C587 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				C1EB7604B40B7151D4FC7D7D /* Pods-LinkableLabelTest.debug.xcconfig */,
+				AB16F1DC61CB0A99D4521591 /* Pods-LinkableLabelTest.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		A2D6C72829E7678133E92A3D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				4D932D3C7199362BFA552987 /* Pods_LinkableLabelTest.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -71,9 +109,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 80801C311FD92DC4004761D3 /* Build configuration list for PBXNativeTarget "LinkableLabelTest" */;
 			buildPhases = (
+				A6E24BDDA3B32F09F76D6A72 /* [CP] Check Pods Manifest.lock */,
 				80801C1B1FD92DC4004761D3 /* Sources */,
 				80801C1C1FD92DC4004761D3 /* Frameworks */,
 				80801C1D1FD92DC4004761D3 /* Resources */,
+				02C0C84CFEC66DBB26F202EB /* [CP] Embed Pods Frameworks */,
+				8AA227315B66BB10E6C25E54 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -96,6 +137,7 @@
 				TargetAttributes = {
 					80801C1E1FD92DC4004761D3 = {
 						CreatedOnToolsVersion = 9.1;
+						LastSwiftMigration = 0910;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -125,11 +167,66 @@
 			files = (
 				80801C2D1FD92DC4004761D3 /* LaunchScreen.storyboard in Resources */,
 				80801C2A1FD92DC4004761D3 /* Assets.xcassets in Resources */,
-				80801C281FD92DC4004761D3 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		02C0C84CFEC66DBB26F202EB /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-LinkableLabelTest/Pods-LinkableLabelTest-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/TTTAttributedLabel/TTTAttributedLabel.framework",
+				"${BUILT_PRODUCTS_DIR}/WatchdogInspector/WatchdogInspector.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TTTAttributedLabel.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/WatchdogInspector.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-LinkableLabelTest/Pods-LinkableLabelTest-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8AA227315B66BB10E6C25E54 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-LinkableLabelTest/Pods-LinkableLabelTest-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A6E24BDDA3B32F09F76D6A72 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-LinkableLabelTest-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		80801C1B1FD92DC4004761D3 /* Sources */ = {
@@ -137,21 +234,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				80801C251FD92DC4004761D3 /* ViewController.swift in Sources */,
+				8062369D1FD930EB009D2C69 /* Data.swift in Sources */,
+				8062369B1FD9301F009D2C69 /* LinkableLabel.swift in Sources */,
 				80801C231FD92DC4004761D3 /* AppDelegate.swift in Sources */,
+				806236971FD92F08009D2C69 /* TTTViewController.swift in Sources */,
+				806236991FD92FFA009D2C69 /* LinkableTableViewCell.swift in Sources */,
+				8062369F1FD93B19009D2C69 /* TTTTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		80801C261FD92DC4004761D3 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				80801C271FD92DC4004761D3 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		80801C2B1FD92DC4004761D3 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -211,7 +305,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -262,7 +356,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
@@ -272,14 +366,19 @@
 		};
 		80801C321FD92DC4004761D3 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C1EB7604B40B7151D4FC7D7D /* Pods-LinkableLabelTest.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = NPY72H3Q84;
 				INFOPLIST_FILE = LinkableLabelTest/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = sddfsdsf.LinkableLabelTest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "LinkableLabelTest/LinkableLabelTest-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -287,14 +386,18 @@
 		};
 		80801C331FD92DC4004761D3 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = AB16F1DC61CB0A99D4521591 /* Pods-LinkableLabelTest.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = NPY72H3Q84;
 				INFOPLIST_FILE = LinkableLabelTest/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = sddfsdsf.LinkableLabelTest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "LinkableLabelTest/LinkableLabelTest-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
