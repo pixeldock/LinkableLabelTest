@@ -38,7 +38,6 @@ class ViewController: UITableViewController, LinkableLabelDelegate {
             linkableCell.titleLabel.text = "This is Row \(indexPath.row)"
             linkableCell.subtitleLabel.text = "This is the subtitle row with some text that breaks into two lines."
             
-            linkableCell.linkableLabel.textColor = .black
             linkableCell.linkableLabel.text = Data.texts[indexPath.row]
             linkableCell.linkableLabel.enableLinks()
             linkableCell.linkableLabel.delegate = self
