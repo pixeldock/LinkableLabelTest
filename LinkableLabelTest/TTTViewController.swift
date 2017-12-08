@@ -37,7 +37,14 @@ class TTTViewController: UITableViewController, TTTAttributedLabelDelegate {
         if let linkableCell = cell as? TTTTableViewCell {
             linkableCell.titleLabel.text = "This is Row \(indexPath.row)"
             linkableCell.subtitleLabel.text = "This is the subtitle row with some text that breaks into two lines."
-            linkableCell.tttLabel.text = Data.texts[indexPath.row]
+            
+            let attributedString = NSMutableAttributedString(string: Data.texts[indexPath.row], attributes: [
+                NSAttributedStringKey.font: UIFont.systemFont(ofSize: 16, weight: .light),
+                    NSAttributedStringKey.foregroundColor: UIColor.lightGray
+                ])
+            attributedString.addAttribute(NSAttributedStringKey.font, value: UIFont.systemFont(ofSize: 16, weight: .bold), range: NSRange(location: 20, length: 10))
+            attributedString.addAttribute(NSAttributedStringKey.underlineStyle, value: NSUnderlineStyle.patternDot.rawValue, range: NSRange(location: 10, length: 6))
+            linkableCell.tttLabel.setText(attributedString)
             linkableCell.tttLabel.delegate = self
         }
         return cell

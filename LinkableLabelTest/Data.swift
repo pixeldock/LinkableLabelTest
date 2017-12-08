@@ -13,6 +13,7 @@ struct Data {
         "This is a cell with a link: www.google.com",
         "This is a cell with 2 links: www.google.com and http://xing.de",
         "This is a cell with 2 links: www.google.com and http://xing.de",
+        "A very long url: http://xing.de/asdfasdf/ASdfdsafasdfasdfasdf/ASdfdsafasdfasdfasdf/ASdfdsafasdfasdfasdf/ASdfdsafasdfasdfasdf/ASdfdsafasdfasdfasdf/ASdfdsafasdfasdfasdf/ASdfdsafasdfasdfasdf/ASdfdsafasdfasdfasdf/ASdfdsafasdfasdfasdf/ASdfdsafasdfasdfasdf/ASdfdsafasdfasdfasdf/ASdfdsafasdfasdfasdf/ASdfdsafasdfasdfasdf/ASdfdsafasdf",
         "Do you see any Teletubbies in here? Do you see a slender plastic tag clipped to my shirt with my name printed on it? Do you see a little Asian child with a blank expression on his face sitting outside on a mechanical helicopter that shakes when you put quarters in it? http://xing.de No? Well, that's what you see at a toy store. www.google.com. And you must think you're in a toy store, because you're here shopping for an infant named Jeb.",
         "You think water moves fast? You should see ice. It moves like it has a mind. Like it knows it killed the world once and got a taste for murder.",
         "Now that there is the Tec-9, a crappy spray gun from South Miami. This gun is advertised as the most popular gun in American crime. www.google.com. Do you believe that shit? It actually says that in the little book that comes with it: http://xing.de the most popular gun in American crime. http://amazon.de. Like they're actually proud of that shit.",

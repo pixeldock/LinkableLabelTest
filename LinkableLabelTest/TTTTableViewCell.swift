@@ -56,8 +56,17 @@ class TTTTableViewCell: UITableViewCell {
         contentView.addSubview(dummyAccessoryView)
         
         tttLabel.numberOfLines = 0
+        tttLabel.isUserInteractionEnabled = true
+        tttLabel.extendsLinkTouchArea = false
         tttLabel.enabledTextCheckingTypes = NSTextCheckingResult.CheckingType.link.rawValue
-        tttLabel.linkAttributes = [NSAttributedStringKey.foregroundColor: UIColor.red]
+        tttLabel.linkAttributes = [
+            NSAttributedStringKey.foregroundColor: UIColor.red
+        ]
+        tttLabel.activeLinkAttributes = [
+            NSAttributedStringKey.foregroundColor: UIColor.red,
+            kTTTBackgroundFillColorAttributeName: UIColor(white: 0, alpha: 0.1).cgColor,
+            kTTTBackgroundCornerRadiusAttributeName: 6.0
+        ]
         contentView.addSubview(tttLabel)
     }
     

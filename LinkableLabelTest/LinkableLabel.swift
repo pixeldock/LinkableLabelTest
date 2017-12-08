@@ -29,6 +29,14 @@ class LinkableLabel: UILabel {
         }
     }
     
+    init() {
+        super.init(frame: .zero)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func layoutSubviews() {
         super.layoutSubviews()
         textContainer.size = bounds.size
@@ -52,6 +60,7 @@ class LinkableLabel: UILabel {
                 guard let url = link.url else { return }
                 self.attributedStringWithLinks?.addAttribute(NSAttributedStringKey.link, value: url, range: link.range)
                 attributedString.addAttribute(NSAttributedStringKey.foregroundColor, value: UIColor.red, range: link.range)
+                attributedString.addAttribute(NSAttributedStringKey.backgroundColor, value: UIColor(white: 0, alpha: 0.05), range: link.range)
             }
             
             DispatchQueue.main.async {

@@ -6,7 +6,7 @@ target 'LinkableLabelTest' do
   use_frameworks!
 
   # Pods for LinkableLabelTest
-  pod 'TTTAttributedLabel', '~> 2.0'
+  pod 'TTTAttributedLabel', '1.13.4'
   pod 'WatchdogInspector'
 
 end

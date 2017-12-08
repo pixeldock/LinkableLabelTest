@@ -8,11 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		000E46C32DB428E4BB84476ACCDF8D53 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 32E2B04BC1935A86EB34129AA71C7D83 /* UIKit.framework */; };
+		00BB7590659935BD672881FA2CF96F60 /* TTTAttributedLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = BACE316D955B36F7EB4EA3A9ACA413F5 /* TTTAttributedLabel.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
 		05F8D91D6CFF5E12ECCAE20DA0F3BA64 /* TTTAttributedLabel.h in Headers */ = {isa = PBXBuildFile; fileRef = 28574A854C858D213C1998D7EA60ABCD /* TTTAttributedLabel.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0C923DD6CF9297E65297D0832A7C6954 /* TWWatchdogInspectorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C8F5E0E14ED9BB777F8A6C237C54EE8D /* TWWatchdogInspectorViewController.m */; };
 		2593D945FA7949CA6CE43B6A12DE6343 /* Pods-LinkableLabelTest-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = AD4F47F1CA42294A000533DF023C7EDC /* Pods-LinkableLabelTest-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		293E733FEBC05DBA37F2697A68394F42 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F59D694A9020F0959A3D1601E40BACC9 /* CoreText.framework */; };
-		352A5A4CE659F62720747D20B62C9EE6 /* TTTAttributedLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = BACE316D955B36F7EB4EA3A9ACA413F5 /* TTTAttributedLabel.m */; };
 		381D948D4547AACB09542DAD915CF6F1 /* Pods-LinkableLabelTest-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 19135AE4BEC2105A6B00E6EE8F9837FA /* Pods-LinkableLabelTest-dummy.m */; };
 		45722B89D4440C090E0E4FF145E90F14 /* TWWatchdogInspector.h in Headers */ = {isa = PBXBuildFile; fileRef = BECD0DD2767547D209F279D158C03094 /* TWWatchdogInspector.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		45F1266B701EF55F314B8409F7269CE5 /* WatchdogInspector-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 2028D4347FB071CD164E3334002F9771 /* WatchdogInspector-dummy.m */; };
@@ -21,8 +21,8 @@
 		61DAC30F8C3897F79DFBE2676BFF714A /* TWWatchdogInspector.m in Sources */ = {isa = PBXBuildFile; fileRef = A8CF2B4B0CC35698F6563C92B8A2196A /* TWWatchdogInspector.m */; };
 		ADF65F149B464B757BDDFF970CA39E79 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E4EE262349108144307D042F49DE193 /* CoreGraphics.framework */; };
 		B2C4ECFE33690E516DA26C0DF5FC0B35 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF58CC92310C0395FBA5E5C639C12F03 /* Foundation.framework */; };
+		BEE15C8EEFBCC5DBA5D22FD901A35333 /* TTTAttributedLabel-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 244EC25645F91061822B03A39F6E7787 /* TTTAttributedLabel-dummy.m */; };
 		C93C8D357BA9406009AD8011483005C4 /* TTTAttributedLabel-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 381DFDDAF182782E218DB1CB4793EC64 /* TTTAttributedLabel-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		D6CE1165E8A20FED3F6FEC220865EACA /* TTTAttributedLabel-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 244EC25645F91061822B03A39F6E7787 /* TTTAttributedLabel-dummy.m */; };
 		DAFA13C62DFB4001238C0E0D173CA076 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF58CC92310C0395FBA5E5C639C12F03 /* Foundation.framework */; };
 		E90F8DA767C29198A747AA78856965BF /* TWWatchdogInspectorViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 64C6220CD861E42AAF7F179926478085 /* TWWatchdogInspectorViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FA50611CC34840DF92713DBAEF21CE45 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF58CC92310C0395FBA5E5C639C12F03 /* Foundation.framework */; };
@@ -299,7 +299,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = AB6C21417ACBF3F3BE493B58D05CE09C /* Build configuration list for PBXNativeTarget "TTTAttributedLabel" */;
 			buildPhases = (
-				5A4F43C04C34BFF90469BA0B5D5AB988 /* Sources */,
+				6B867490B19D420D8F46BA678986749F /* Sources */,
 				970149CE2BDC8BF75BECC8F886ED24F7 /* Frameworks */,
 				F4794134F5D67AADB91E6BFED8232DF1 /* Headers */,
 			);
@@ -378,12 +378,12 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		5A4F43C04C34BFF90469BA0B5D5AB988 /* Sources */ = {
+		6B867490B19D420D8F46BA678986749F /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D6CE1165E8A20FED3F6FEC220865EACA /* TTTAttributedLabel-dummy.m in Sources */,
-				352A5A4CE659F62720747D20B62C9EE6 /* TTTAttributedLabel.m in Sources */,
+				BEE15C8EEFBCC5DBA5D22FD901A35333 /* TTTAttributedLabel-dummy.m in Sources */,
+				00BB7590659935BD672881FA2CF96F60 /* TTTAttributedLabel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
