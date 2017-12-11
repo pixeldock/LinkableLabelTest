@@ -10,6 +10,13 @@ import UIKit
 
 class ViewController: UITableViewController, LinkableLabelDelegate {
     let numberOfRows = 100
+    let linkAttributes: [NSAttributedStringKey: Any] = [
+        .foregroundColor: UIColor.red
+    ]
+    let activeLinkAttributes: [LinkableLabel.ActiveLinkAttributeKey: Any] = [
+        .backgroundColor: UIColor(white: 0, alpha: 0.1),
+        .cornerRadius: 4
+        ]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,7 +46,7 @@ class ViewController: UITableViewController, LinkableLabelDelegate {
             linkableCell.subtitleLabel.text = "This is the subtitle row with some text that breaks into two lines."
             
             linkableCell.linkableLabel.text = Data.texts[indexPath.row]
-            linkableCell.linkableLabel.enableLinks()
+            linkableCell.linkableLabel.enableLinks(withLinkAttributes: linkAttributes, activeLinkAttributes: activeLinkAttributes)
             linkableCell.linkableLabel.delegate = self
         }
         return cell
