@@ -26,7 +26,6 @@ class ViewController: UITableViewController, LinkableLabelDelegate {
         tableView.register(LinkableTableViewCell.self, forCellReuseIdentifier: "linkableCell")
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 100
-        tableView.allowsSelection = false
     }
 
     override func didReceiveMemoryWarning() {
@@ -60,7 +59,12 @@ class ViewController: UITableViewController, LinkableLabelDelegate {
         return 1
     }
     
-    func linkableLabel(_ label: LinkableLabel, didPressLink url: URL) {
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        print("Did select row \(indexPath.row)")
+    }
+    
+    func linkableLabel(_ label: LinkableLabel, didPressURL url: URL) {
         let alertView = UIAlertController(title: "Open?", message: "\(url)" , preferredStyle: .alert)
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         let openAction = UIAlertAction(title: "Open", style: .default) { _ in

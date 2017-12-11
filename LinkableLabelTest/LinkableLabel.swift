@@ -9,7 +9,7 @@
 import UIKit
 
 protocol LinkableLabelDelegate: class {
-    func linkableLabel(_ label: LinkableLabel, didPressLink url: URL)
+    func linkableLabel(_ label: LinkableLabel, didPressURL url: URL)
 }
 
 class LinkableLabel: UIView {
@@ -35,6 +35,7 @@ class LinkableLabel: UIView {
     }
     
     fileprivate var links: [Link] = []
+    fileprivate var activeLink: Link?
     
     // Link detection only makes sense with attributed strings.
     // You can set LinkableLabel's 'text' property, but internally
@@ -111,21 +112,31 @@ class LinkableLabel: UIView {
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        super.touchesBegan(touches, with: event)
-        guard let touch = touches.first else { return }
-        if let link = touchedLink(at: touch.location(in: self)) {
-            markLinkAsActive(at: link.range)
-        }
+        guard
+            let touch = touches.first,
+            let link = touchedLink(at: touch.location(in: self))
+            else {
+                super.touchesBegan(touches, with: event)
+                return
+            }
+        
+        markLinkAsActive(at: link.range)
+        activeLink = link
     }
     
     override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
-        markLinkAsInactiveIfNeeded()
+        markLinkAsInactive()
+        activeLink = nil
         super.touchesCancelled(touches, with: event)
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        markLinkAsInactiveIfNeeded()
-        super.touchesEnded(touches, with: event)
+        guard let link = activeLink else {
+            super.touchesEnded(touches, with: event)
+            return
+        }
+        markLinkAsInactive()
+        delegate?.linkableLabel(self, didPressURL: link.url)
     }
     
     func enableLinks(withLinkAttributes linkAttributes: [NSAttributedStringKey : Any], activeLinkAttributes: [ActiveLinkAttributeKey: Any] = [:]) {
@@ -161,11 +172,7 @@ class LinkableLabel: UIView {
                 self.textStorage.setAttributedString(attributedString)
                 self.textStorage.addLayoutManager(self.layoutManager)
                 
-                self.attributedText = attributedString
-                let recognizer = UITapGestureRecognizer(target: self, action: #selector(self.didTap))
-                self.addGestureRecognizer(recognizer)
-                self.isUserInteractionEnabled = true
-            }
+                self.attributedText = attributedString            }
         }
     }
 }
@@ -194,7 +201,7 @@ fileprivate extension LinkableLabel {
     
     @objc func didTap(recognizer: UITapGestureRecognizer) {
         if let link = touchedLink(at: recognizer.location(in: self)) {
-            delegate?.linkableLabel(self, didPressLink: link.url)
+            delegate?.linkableLabel(self, didPressURL: link.url)
         }
     }
     
@@ -276,7 +283,7 @@ fileprivate extension LinkableLabel {
         }
     }
     
-    func markLinkAsInactiveIfNeeded() {
+    func markLinkAsInactive() {
         activeLinkBackgroundLayers.forEach { $0.removeFromSuperlayer() }
     }
     
