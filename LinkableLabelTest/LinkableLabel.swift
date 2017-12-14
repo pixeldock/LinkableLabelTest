@@ -28,7 +28,7 @@ class LinkableLabel: UILabel {
     fileprivate var textStorage = NSTextStorage()
     
     fileprivate var linkAttributes = [
-        NSAttributedStringKey.foregroundColor: UIColor.red
+        NSAttributedStringKey.foregroundColor: UIColor.green
     ]
     fileprivate var activeLinkAttributes: [String : Any] = [
         ActiveLinkAttributeKey.backgroundColor: UIColor(white: 0, alpha: 0.15),
@@ -45,13 +45,8 @@ class LinkableLabel: UILabel {
     // You can set LinkableLabel's 'text' property, but internally
     // only 'attributedText' are being used
     override var text: String? {
-        get {
-            return attributedText?.string
-        }
-        set {
-            // this creates an attributed string that preserves the
-            // values of 'font' and 'textColor'
-            attributedText = attributedString(with: newValue)
+        didSet {
+            attributedText = attributedString(with: text)
         }
     }
     
@@ -71,12 +66,13 @@ class LinkableLabel: UILabel {
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         guard
+            !links.isEmpty,
             let touch = touches.first,
             let link = touchedLink(at: touch.location(in: self))
             else {
                 super.touchesBegan(touches, with: event)
                 return
-            }
+        }
         
         markLinkAsActive(at: link.range)
         activeLink = link
@@ -95,20 +91,22 @@ class LinkableLabel: UILabel {
         }
         markLinkAsInactive()
         delegate?.linkableLabel(self, didPressURL: link.url)
+        activeLink = nil
     }
     
     func enableLinks() {
-        guard let attributedText = attributedText else {
+        self.links.removeAll()
+        self.convertExistingLinks()
+        guard let attributedText = self.attributedText else {
             print("⚠️ LinkableLabel: Please set 'text' or 'attributedText' before calling 'enableLinks()'")
             return
         }
         
         DispatchQueue.global().async {
-            self.links.removeAll()
             let detector = try! NSDataDetector(types: NSTextCheckingResult.CheckingType.link.rawValue)
             let matchedLinks = detector.matches(in: attributedText.string, options: [], range: NSRange(location: 0, length: attributedText.string.count))
             
-            guard matchedLinks.count > 0 else { return }
+            guard self.links.count + matchedLinks.count > 0 else { return }
             
             let attributedString = NSMutableAttributedString(attributedString: attributedText)
             matchedLinks.forEach { link in
@@ -137,18 +135,26 @@ class LinkableLabel: UILabel {
 
 fileprivate extension LinkableLabel {
     
+    func convertExistingLinks() {
+        guard let attributedText = attributedText else { return }
+        
+        let cleanAttributedString = NSMutableAttributedString(attributedString: attributedText)
+        attributedText.enumerateAttribute(.link, in: NSRange(location: 0, length: attributedText.length), options: .reverse) { (value, range, _) in
+            if let url = value as? URL {
+                self.links.append(Link(range: range, url: url))
+                cleanAttributedString.removeAttribute(.link, range: range)
+                cleanAttributedString.addAttributes(self.linkAttributes, range: range)
+            }
+        }
+        self.attributedText = cleanAttributedString
+    }
+    
     func attributedString(with string: String?) -> NSAttributedString? {
         guard let string = string else { return nil }
         return NSAttributedString(string: string, attributes: [
             NSAttributedStringKey.font: font,
             NSAttributedStringKey.foregroundColor: textColor
             ])
-    }
-    
-    @objc func didTap(recognizer: UITapGestureRecognizer) {
-        if let link = touchedLink(at: recognizer.location(in: self)) {
-            delegate?.linkableLabel(self, didPressURL: link.url)
-        }
     }
     
     func touchedLink(at touchLocation: CGPoint) -> Link? {
