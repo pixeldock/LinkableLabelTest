@@ -12,94 +12,52 @@ protocol LinkableLabelDelegate: class {
     func linkableLabel(_ label: LinkableLabel, didPressURL url: URL)
 }
 
-class LinkableLabel: UIView {
-    fileprivate let label = UILabel()
-    
-    fileprivate var layoutManager = NSLayoutManager()
-    fileprivate let textContainer = NSTextContainer()
-    fileprivate var textStorage = NSTextStorage()
-    
-    fileprivate var activeLinkAttributes: [ActiveLinkAttributeKey: Any] = [:]
-    fileprivate var activeLinkBackgroundLayers: [CAShapeLayer] = []
-    
-    weak var delegate: LinkableLabelDelegate?
-    
+class LinkableLabel: UILabel {
     fileprivate struct Link {
         let range: NSRange
         let url: URL
     }
     
-    enum ActiveLinkAttributeKey {
-        case backgroundColor
-        case cornerRadius
+    fileprivate struct ActiveLinkAttributeKey {
+        static let backgroundColor = "backgroundColor"
+        static let cornerRadius = "cornerRadius"
     }
+    
+    fileprivate var layoutManager = NSLayoutManager()
+    fileprivate let textContainer = NSTextContainer()
+    fileprivate var textStorage = NSTextStorage()
+    
+    fileprivate var linkAttributes = [
+        NSAttributedStringKey.foregroundColor: UIColor.red
+    ]
+    fileprivate var activeLinkAttributes: [String : Any] = [
+        ActiveLinkAttributeKey.backgroundColor: UIColor(white: 0, alpha: 0.15),
+        ActiveLinkAttributeKey.cornerRadius: CGFloat(4)
+    ]
     
     fileprivate var links: [Link] = []
     fileprivate var activeLink: Link?
+    fileprivate var activeLinkBackgroundLayers: [CAShapeLayer] = []
+    
+    weak var delegate: LinkableLabelDelegate?
     
     // Link detection only makes sense with attributed strings.
     // You can set LinkableLabel's 'text' property, but internally
     // only 'attributedText' are being used
-    var text: String? {
+    override var text: String? {
         get {
-            return label.attributedText?.string
+            return attributedText?.string
         }
         set {
             // this creates an attributed string that preserves the
             // values of 'font' and 'textColor'
-            label.attributedText = attributedString(with: newValue)
-        }
-    }
-    
-    var attributedText: NSAttributedString? {
-        get {
-            return label.attributedText
-        }
-        set {
-            label.attributedText = newValue
-        }
-    }
-    
-    var numberOfLines: Int {
-        get {
-            return label.numberOfLines
-        }
-        set {
-            label.numberOfLines = newValue
-        }
-    }
-    
-    var textColor: UIColor? {
-        get {
-            return label.textColor
-        }
-        set {
-            label.textColor = newValue
-        }
-    }
-    
-    var font: UIFont {
-        get {
-            return label.font
-        }
-        set {
-            label.font = newValue
-        }
-    }
-    
-    var lineBreakMode: NSLineBreakMode {
-        get {
-            return label.lineBreakMode
-        }
-        set {
-            label.lineBreakMode = newValue
-            textContainer.lineBreakMode = newValue
+            attributedText = attributedString(with: newValue)
         }
     }
     
     init() {
         super.init(frame: .zero)
-        setupView()
+        isUserInteractionEnabled = true
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -139,12 +97,11 @@ class LinkableLabel: UIView {
         delegate?.linkableLabel(self, didPressURL: link.url)
     }
     
-    func enableLinks(withLinkAttributes linkAttributes: [NSAttributedStringKey : Any], activeLinkAttributes: [ActiveLinkAttributeKey: Any] = [:]) {
-        guard let attributedText = label.attributedText else {
+    func enableLinks() {
+        guard let attributedText = attributedText else {
             print("⚠️ LinkableLabel: Please set 'text' or 'attributedText' before calling 'enableLinks()'")
             return
         }
-        self.activeLinkAttributes = activeLinkAttributes
         
         DispatchQueue.global().async {
             self.links.removeAll()
@@ -156,13 +113,13 @@ class LinkableLabel: UIView {
             let attributedString = NSMutableAttributedString(attributedString: attributedText)
             matchedLinks.forEach { link in
                 guard let url = link.url else { return }
-                attributedString.addAttributes(linkAttributes, range: link.range)
+                attributedString.addAttributes(self.linkAttributes, range: link.range)
                 self.links.append(Link(range: link.range, url: url))
             }
             
             DispatchQueue.main.async {
                 self.textContainer.lineFragmentPadding = 0
-                self.textContainer.lineBreakMode = self.label.lineBreakMode
+                self.textContainer.lineBreakMode = self.lineBreakMode
                 self.textContainer.maximumNumberOfLines = self.numberOfLines
                 
                 self.layoutManager = NSLayoutManager()
@@ -172,30 +129,19 @@ class LinkableLabel: UIView {
                 self.textStorage.setAttributedString(attributedString)
                 self.textStorage.addLayoutManager(self.layoutManager)
                 
-                self.attributedText = attributedString            }
+                self.attributedText = attributedString
+            }
         }
     }
 }
 
 fileprivate extension LinkableLabel {
     
-    func setupView() {
-        addSubview(label)
-        
-        label.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            label.topAnchor.constraint(equalTo: topAnchor),
-            label.leadingAnchor.constraint(equalTo: leadingAnchor),
-            label.trailingAnchor.constraint(equalTo: trailingAnchor),
-            label.bottomAnchor.constraint(equalTo: bottomAnchor),
-            ])
-    }
-    
     func attributedString(with string: String?) -> NSAttributedString? {
         guard let string = string else { return nil }
         return NSAttributedString(string: string, attributes: [
-            NSAttributedStringKey.font: label.font,
-            NSAttributedStringKey.foregroundColor: label.textColor
+            NSAttributedStringKey.font: font,
+            NSAttributedStringKey.foregroundColor: textColor
             ])
     }
     
@@ -272,33 +218,18 @@ fileprivate extension LinkableLabel {
     
     func addBackgroundLayers(for lineRects: [CGRect]) {
         let backgroundColor = (activeLinkAttributes[ActiveLinkAttributeKey.backgroundColor] as? UIColor) ?? UIColor.clear
-        let cornerRadius = activeLinkCornerRadius()
+        let cornerRadius = (activeLinkAttributes[ActiveLinkAttributeKey.cornerRadius] as? CGFloat) ?? CGFloat(0)
         for rect in lineRects {
             let backgroundLayer = CAShapeLayer()
             backgroundLayer.frame = rect
             backgroundLayer.cornerRadius = cornerRadius
             backgroundLayer.backgroundColor = backgroundColor.cgColor
             layer.insertSublayer(backgroundLayer, at: 0)
-            self.activeLinkBackgroundLayers.append(backgroundLayer)
+            activeLinkBackgroundLayers.append(backgroundLayer)
         }
     }
     
     func markLinkAsInactive() {
         activeLinkBackgroundLayers.forEach { $0.removeFromSuperlayer() }
-    }
-    
-    func activeLinkCornerRadius() -> CGFloat {
-        guard let cornerRadiusAttribute = activeLinkAttributes[ActiveLinkAttributeKey.cornerRadius] else { return 0 }
-        
-        switch cornerRadiusAttribute {
-        case let cornerRadius as CGFloat:
-            return cornerRadius
-        case let cornerRadius as Int:
-            return CGFloat(cornerRadius)
-        case let cornerRadius as Double:
-            return CGFloat(cornerRadius)
-        default:
-            return 0
-        }
     }
 }
